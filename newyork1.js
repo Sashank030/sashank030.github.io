@@ -1,7 +1,6 @@
-// Initialize the page with the home content
+
 showHome();
 
-// Functions to show different content
 function showHome() {
     document.getElementById("title").innerText = "Welcome to My Website";
     document.getElementById("content").innerHTML = "<p>This is the home page content.</p>";
@@ -20,4 +19,25 @@ function showContact() {
             <p>Phone: +1 (123) 456-7890</p>
         </address>
     `;
+}
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+const scrollToTopButton = document.getElementById("scroll-to-top");
+if (scrollToTopButton) {
+    scrollToTopButton.addEventListener("click", () => {
+        scrollToSection("header");
+    });
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            scrollToTopButton.style.display = "block";
+        } else {
+            scrollToTopButton.style.display = "none";
+        }
+    });
 }
