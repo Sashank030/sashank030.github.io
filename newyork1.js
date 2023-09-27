@@ -11,6 +11,8 @@ function showAbout() {
     document.getElementById("content").innerHTML = "<p>We are a small team dedicated to creating amazing websites.</p>";
 }
 
+document.getElementById('about').classList.add('fade-in');
+
 function showContact() {
     document.getElementById("title").innerText = "Contact Us";
     document.getElementById("content").innerHTML = `
@@ -20,6 +22,7 @@ function showContact() {
         </address>
     `;
 }
+
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -27,12 +30,14 @@ function scrollToSection(sectionId) {
     }
 }
 
+
 const scrollToTopButton = document.getElementById("scroll-to-top");
 if (scrollToTopButton) {
     scrollToTopButton.addEventListener("click", () => {
         scrollToSection("header");
     });
 
+   
     window.addEventListener("scroll", () => {
         if (window.scrollY > 200) {
             scrollToTopButton.style.display = "block";
@@ -41,3 +46,34 @@ if (scrollToTopButton) {
         }
     });
 }
+
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+
+const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+function enableDarkMode() {
+    body.classList.add('dark-mode');
+    localStorage.setItem('dark-mode', 'enabled');
+}
+
+function disableDarkMode() {
+    body.classList.remove('dark-mode');
+    localStorage.setItem('dark-mode', 'disabled');
+}
+
+function toggleDarkMode() {
+    if (body.classList.contains('dark-mode')) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
+}
+
+if (userPrefersDark || localStorage.getItem('dark-mode') === 'enabled') {
+    enableDarkMode();
+}
+
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
