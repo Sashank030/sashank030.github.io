@@ -1,14 +1,27 @@
 
-body, h1, h2, p, ul, li, form {
+html {
+    scroll-behavior: smooth;
+}
+body, h1, p, ul, li, form {
     margin: 0;
     padding: 0;
 }
-
+body.dark-mode {
+ 
+    background-image: linear-gradient(rgba(18, 18, 18, 0.5), rgba(18, 18, 18, 0.5)), url("https://i.guim.co.uk/img/media/b3585cf7b5525c4f27b924754ed98b3b7fbdaf53/0_383_8048_4831/master/8048.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=96b8d7008ff5f1d15724b17c17736f1c");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff; 
+}
 
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     line-height: 1.6;
+}
+body.dark-mode {
+    background-color: #121212; 
+    color: #fff; 
 }
 
 
@@ -52,6 +65,7 @@ section h2 {
     margin-bottom: 1rem;
 }
 
+
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -64,6 +78,7 @@ section h2 {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
 
 form {
     max-width: 400px;
@@ -95,6 +110,7 @@ button {
     cursor: pointer;
 }
 
+
 footer {
     text-align: center;
     padding: 1rem 0;
@@ -117,41 +133,18 @@ footer {
         max-width: 100%;
     }
 }
-nav a:hover {
-    color: #ff5733; 
-    transition: color 0.3s ease;
-}
 
-section {
-    padding: 2rem;
+    padding: 1rem; 
+} */
+
+#about {
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateY(20px); 
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.fade-in {
+
+#about.fade-in {
     opacity: 1; 
-}
-
-#scroll-to-top {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#scroll-to-top:hover {
-    background-color: #ff5733;
-}
-
-@media (max-width: 768px) {
-    #scroll-to-top {
-        bottom: 10px;
-        right: 10px;
-    }
+    transform: translateY(0);
 }
